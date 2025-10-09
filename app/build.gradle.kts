@@ -55,7 +55,7 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.converter.gson)
 
-    implementation(project.dependencies.platform(libs.koin.bom))
+    implementation(platform(libs.koin.bom))
     implementation(libs.koin.android)
     implementation(libs.koin.annotations)
 
@@ -66,12 +66,16 @@ dependencies {
     implementation(libs.room.coroutines)
     ksp(libs.room.ksp)
 
+
+
     testImplementation(libs.junit)
 
 
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
+
 ksp {
     arg("KOIN_CONFIG_CHECK", "true")
 }
+
