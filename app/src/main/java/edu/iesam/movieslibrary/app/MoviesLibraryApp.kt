@@ -2,7 +2,9 @@ package edu.iesam.movieslibrary.app
 
 import android.app.Application
 import edu.iesam.movieslibrary.app.di.AppModule
+import edu.iesam.movieslibrary.app.di.LocalModule
 import edu.iesam.movieslibrary.app.di.RemoteModule
+import edu.iesam.movieslibrary.app.features.movies.di.MovieModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.GlobalContext.startKoin
 import org.koin.ksp.generated.module
@@ -12,7 +14,11 @@ class MoviesLibraryApp: Application() {
         super.onCreate()
         startKoin {
             androidContext(this@MoviesLibraryApp)
-            modules(AppModule().module, RemoteModule().module)
+            modules(
+                AppModule().module,
+                RemoteModule().module,
+                LocalModule().module,
+                MovieModule().module)
         }
     }
 }
