@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MoviesLibrary</string>
+    <string name="movies">Peliculas</string>
+    <string name="details">Detalles\n</string>
 </resources>

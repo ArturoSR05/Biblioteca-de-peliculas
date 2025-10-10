@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/movies">
+
+    <fragment
+        android:id="@+id/movies"
+        android:name="edu.iesam.movieslibrary.app.features.movies.presentation.MoviesFragment"
+        android:label="@string/movies"
+        tools:layout="@layout/fragment_movies">
+
+        <action
+            android:id="@+id/action_from_movies_to_movies_detail"
+            app:destination="@+id/movies_detail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/movies_detail"
+        android:name="edu.iesam.movieslibrary.app.features.movies.presentation.MoviesDetailFragment"
+        android:label="@string/details"
+        tools:layout="@layout/fragment_movies_detail" />
+
+</navigation>
