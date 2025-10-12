@@ -21,4 +21,8 @@ class MoviesDataRepository(
         }
         return moviesLocal
     }
+
+    override suspend fun getMovieById(id: String): Movie {
+        return local.getById(id)
+    }
 }
