@@ -1,6 +1,5 @@
 package edu.iesam.movieslibrary.app.features.movies.di
 
-import edu.iesam.movieslibrary.app.features.movies.data.local.db.FavoriteDao
 import edu.iesam.movieslibrary.app.features.movies.data.local.db.MoviesDao
 import edu.iesam.movieslibrary.app.features.movies.data.local.db.MoviesLibraryDataBase
 import edu.iesam.movieslibrary.app.features.movies.data.local.remote.MovieService
@@ -19,10 +18,5 @@ class MovieModule {
     @Single
     fun provideMoviesDao(db: MoviesLibraryDataBase): MoviesDao {
         return db.moviesDao()
-    }
-
-    @Single
-    fun provideFavoriteDao(db: MoviesLibraryDataBase): FavoriteDao {
-        return db.favoriteDao()
     }
 }

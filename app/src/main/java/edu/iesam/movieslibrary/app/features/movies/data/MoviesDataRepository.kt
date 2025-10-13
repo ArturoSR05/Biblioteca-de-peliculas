@@ -25,20 +25,4 @@ class MoviesDataRepository(
     override suspend fun getMovieById(id: String): Movie {
         return local.getById(id)
     }
-
-    override suspend fun getFavorites(): List<Movie> {
-        return local.getFavoriteMovies()
-    }
-
-    override suspend fun saveFavorites(movie: Movie) {
-        local.saveFavorite(movie)
-    }
-
-    override suspend fun deleteFavorites(movie: Movie) {
-        local.deleteFavorite(movie)
-    }
-
-    override suspend fun toggleFavorites(movie: Movie) {
-        local.toggleFavorite(movie)
-    }
 }
