@@ -5,8 +5,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/padding"
-        card_view:cardCornerRadius="12dp"
+        card_view:cardCornerRadius="@dimen/padding_md"
         card_view:cardUseCompatPadding="true"
+        style="@style/CardView.Light"
         android:id="@+id/movies_item">
 
         <LinearLayout
@@ -23,7 +24,7 @@
                 android:contentDescription="@string/app_name"/>
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="@dimen/width_container"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical"
@@ -34,7 +35,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_overView"
                     android:maxLines="2"
                     android:ellipsize="end"/>
 
@@ -42,8 +43,8 @@
                     android:id="@+id/summary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="8sp"
-                    android:layout_marginTop="@dimen/margin_rating"/>
+                    android:textSize="@dimen/text_summary"
+                    android:layout_marginTop="@dimen/spacing"/>
 
             </LinearLayout>
 

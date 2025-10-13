@@ -13,7 +13,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/movies_list"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/height_container"
         android:paddingBottom="@dimen/padding"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
