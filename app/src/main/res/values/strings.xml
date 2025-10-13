@@ -2,4 +2,5 @@
     <string name="app_name">MoviesLibrary</string>
     <string name="movies">Peliculas</string>
     <string name="details">Detalles\n</string>
+    <string name="estreno">Estrenada: 2023-10-09</string>
 </resources>

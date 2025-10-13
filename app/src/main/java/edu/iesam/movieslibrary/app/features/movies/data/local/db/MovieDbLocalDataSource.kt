@@ -20,4 +20,8 @@ class MovieDbLocalDataSource(private val moviesDao: MoviesDao) {
         }
         moviesDao.saveAllMovies(*moviesList.toTypedArray())
     }
+
+    suspend fun getById(id: String): Movie {
+        return moviesDao.findById(id).toDomain()
+    }
 }

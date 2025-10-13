@@ -11,6 +11,9 @@ interface MoviesDao {
     @Query("SELECT * FROM $MOVIES_TABLE")
     suspend fun findAllMovies(): List<MovieEntity>
 
+    @Query("SELECT * FROM $MOVIES_TABLE WHERE $MOVIE_ID = :id LIMIT 1")
+    suspend fun findById(id: String): MovieEntity
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveAllMovies(vararg movieEntity: MovieEntity)
 }
