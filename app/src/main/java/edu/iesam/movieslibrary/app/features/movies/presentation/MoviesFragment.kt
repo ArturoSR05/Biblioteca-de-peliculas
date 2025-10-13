@@ -22,6 +22,8 @@ class MoviesFragment: Fragment() {
     private val moviesAdapter = MoviesAdapter()
     private val viewModel: MoviesViewModel by viewModel()
 
+    private var showingFavorites = false
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -36,9 +38,26 @@ class MoviesFragment: Fragment() {
         binding.apply {
             moviesToolbar.toolbar.title = requireContext().getString(R.string.movies)
             moviesToolbar.imgToolbar.setImageResource(R.drawable.ic_favorite_border)
+            favoriteFilter()
             moviesList.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             moviesList.adapter = moviesAdapter
+            moviesAdapter.setOnItemClickListener {
+                viewModel.toggleFavorite(it,showingFavorites)
+            }
+        }
+    }
+
+    private fun FragmentMoviesBinding.favoriteFilter(){
+        moviesToolbar.imgToolbar.setOnClickListener {
+            showingFavorites = !showingFavorites
+            if(showingFavorites){
+                moviesToolbar.imgToolbar.setImageResource(R.drawable.ic_favorite)
+                viewModel.loadFavorites()
+            } else{
+                moviesToolbar.imgToolbar.setImageResource(R.drawable.ic_favorite_border)
+                viewModel.fetchMovies()
+            }
         }
     }
 
