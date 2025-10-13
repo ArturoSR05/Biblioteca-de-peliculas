@@ -18,8 +18,14 @@
 
     <fragment
         android:id="@+id/movies_detail"
-        android:name="edu.iesam.movieslibrary.app.features.movies.presentation.MoviesDetailFragment"
+        android:name="edu.iesam.movieslibrary.app.features.movies.presentation.MovieDetailFragment"
         android:label="@string/details"
-        tools:layout="@layout/fragment_movies_detail" />
+        tools:layout="@layout/fragment_movie_detail" >
+
+    <argument
+        android:name="movieId"
+        app:argType="string"/>
+
+    </fragment>
 
 </navigation>
