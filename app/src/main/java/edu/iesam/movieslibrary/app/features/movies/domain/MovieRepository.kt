@@ -7,4 +7,5 @@ interface MovieRepository {
     suspend fun saveFavorites(movie: Movie)
     suspend fun deleteFavorites(movie: Movie)
     suspend fun toggleFavorites(movie: Movie)
+    suspend fun searchMovies(query: String): List<Movie>
 }

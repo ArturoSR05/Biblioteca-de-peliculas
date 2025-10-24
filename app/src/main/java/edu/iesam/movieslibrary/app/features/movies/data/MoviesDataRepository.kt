@@ -41,4 +41,9 @@ class MoviesDataRepository(
     override suspend fun toggleFavorites(movie: Movie) {
         local.toggleFavorite(movie)
     }
-}
+
+    override suspend fun searchMovies(query: String): List<Movie> {
+        if (query.isBlank()) return emptyList()
+        val remoteResults = remote.searchMovies(query)
+        return remoteResults.filter { it.title.equals(query, ignoreCase = true) }
+    }}

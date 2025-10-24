@@ -10,11 +10,28 @@
         android:id="@+id/movies_toolbar"
         layout="@layout/view_toolbar" />
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/search_movies"
+        app:layout_constraintTop_toBottomOf="@id/movies_toolbar"
+        app:layout_constraintBottom_toTopOf="@id/movies_list"
+        android:paddingTop="@dimen/padding_bg">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionSearch"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/movies_list"
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_container"
         android:paddingBottom="@dimen/padding"
+        android:paddingTop="@dimen/padding_2bg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/movies_toolbar"

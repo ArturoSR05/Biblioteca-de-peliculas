@@ -1,13 +1,19 @@
 package edu.iesam.movieslibrary.app.features.movies.presentation
 
+import android.R.attr.text
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.search.SearchView
+import com.google.android.material.textfield.TextInputEditText
 import edu.iesam.movieslibrary.R
 import edu.iesam.movieslibrary.app.features.movies.presentation.adapter.MoviesAdapter
 import edu.iesam.movieslibrary.databinding.FragmentMoviesBinding
@@ -23,7 +29,6 @@ class MoviesFragment: Fragment() {
     private val viewModel: MoviesViewModel by viewModel()
 
     private var showingFavorites = false
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -64,8 +69,26 @@ class MoviesFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupObserver()
+        setupSearch()
         viewModel.fetchMovies()
     }
+
+    private fun setupSearch() {
+        val editText = binding.root.findViewById<TextInputEditText>(
+            R.id.editTextSearch
+        )
+        if (editText != null) {
+            editText.addTextChangedListener { text ->
+                viewModel.onSearchQueryChanged(text?.toString().orEmpty())
+            }
+            editText.setOnEditorActionListener { _, actionId, _ ->
+                viewModel.submitSearch()
+                true
+            }
+        }
+    }
+
+
 
     private fun setupObserver() {
         val movieObserver = Observer<MoviesViewModel.UiState> {
