@@ -16,4 +16,15 @@ class MovieApiRemoteDataSource(private val movieService: MovieService) {
             emptyList()
         }
     }
+
+    suspend fun searchMovies(query: String): List<Movie> {
+        if (query.isBlank()) return emptyList()
+        val response = movieService.searchMovies(query)
+        return if (response.isSuccessful) {
+            // La API envuelve el show en { score, show }
+            response.body()?.map { it.show.toModel() } ?: emptyList()
+        } else {
+            emptyList()
+        }
+    }
 }
